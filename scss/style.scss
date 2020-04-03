@@ -1,4 +1,5 @@
 @import "reset";
+@import "mixins";
 
 html {
     // overflow: hidden;
@@ -35,7 +36,7 @@ button {
 .customization {
     height: 100vh;
     display: flex;
-    background-image: url(../image/leather-1251795_1280.jpg);
+    background-image: url(../image/BackGround_2nd_Page.jpg);
 
     &__container {
         display: flex;
@@ -109,7 +110,102 @@ button {
         }
     }
 
+}
 
+.game {
+    height: 100vh;
+    background-image: url(../image/Arena.jpg);
+    background-position: center;
 
+    &__container {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
 
+        &__hero {
+            position: absolute;
+            bottom: 25%;
+            left: 5%;
+
+            &__bars {
+                @include bars();
+
+                &__hp {
+                    @include HpManaBars();
+                    background-color: #6AB55D;
+                }
+
+                &__mana {
+                    @include HpManaBars();
+                    background-color: #3E89C7;
+                }
+            }
+
+            &__image {
+                height: 450px;
+            }
+        }
+
+        &__monster {
+            position: absolute;
+            bottom: 25%;
+            right: 10%;
+
+            &__bars {
+                @include bars();
+
+                &__hp {
+                    @include HpManaBars();
+                    background-color: #6AB55D;
+                }
+
+                &__mana {
+                    @include HpManaBars();
+                    background-color: #3E89C7;
+                }
+            }
+
+            &__image {
+                height: 500px;
+            }
+        }
+
+        &__panel {
+            @include panel();
+            display: flex;
+            flex-wrap: wrap;
+            left: 0%;
+
+            &__attack {
+                @include panelButton();
+            }
+
+            &__defense {
+                @include panelButton();
+            }
+
+            &__special {
+                @include panelButton();
+            }
+
+            &__pass {
+                @include panelButton();
+            }
+        }
+
+        &__combat-text {
+            @include panel();
+            left: 50%;
+            overflow: auto;
+
+            &>span {
+                display: block;
+                margin: 10px 10px 10px 20px;
+                font-weight: bold;
+                font-family: 'Amatic SC', cursive;
+                font-size: 45px;
+            }
+        }
+    }
 }

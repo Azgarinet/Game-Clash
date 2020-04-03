@@ -38,7 +38,7 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-image: url(../image/leather-1251795_1280.jpg);
+  background-image: url(../image/BackGround_2nd_Page.jpg);
 }
 
 .customization__container {
@@ -119,5 +119,166 @@ button {
   border: 4px solid black;
   font-size: 30px;
   font-weight: bold;
+}
+
+.game {
+  height: 100vh;
+  background-image: url(../image/Arena.jpg);
+  background-position: center;
+}
+
+.game__container {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.game__container__hero {
+  position: absolute;
+  bottom: 25%;
+  left: 5%;
+}
+
+.game__container__hero__bars {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+
+.game__container__hero__bars__hp {
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
+  border: 1px solid #EDAB23;
+  background-color: #6AB55D;
+}
+
+.game__container__hero__bars__mana {
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
+  border: 1px solid #EDAB23;
+  background-color: #3E89C7;
+}
+
+.game__container__hero__image {
+  height: 450px;
+}
+
+.game__container__monster {
+  position: absolute;
+  bottom: 25%;
+  right: 10%;
+}
+
+.game__container__monster__bars {
+  width: 50%;
+  margin: 0 auto 20px;
+}
+
+.game__container__monster__bars__hp {
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
+  border: 1px solid #EDAB23;
+  background-color: #6AB55D;
+}
+
+.game__container__monster__bars__mana {
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
+  border: 1px solid #EDAB23;
+  background-color: #3E89C7;
+}
+
+.game__container__monster__image {
+  height: 500px;
+}
+
+.game__container__panel {
+  position: absolute;
+  width: 50%;
+  height: 200px;
+  bottom: 0px;
+  border: black 5px solid;
+  background-image: url(../image/BackGround_2nd_Page.jpg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  left: 0%;
+}
+
+.game__container__panel__attack {
+  height: 50%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  font-size: 50px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  text-align: center;
+  line-height: 95px;
+  border: 1px solid grey;
+}
+
+.game__container__panel__defense {
+  height: 50%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  font-size: 50px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  text-align: center;
+  line-height: 95px;
+  border: 1px solid grey;
+}
+
+.game__container__panel__special {
+  height: 50%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  font-size: 50px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  text-align: center;
+  line-height: 95px;
+  border: 1px solid grey;
+}
+
+.game__container__panel__pass {
+  height: 50%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  font-size: 50px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  text-align: center;
+  line-height: 95px;
+  border: 1px solid grey;
+}
+
+.game__container__combat-text {
+  position: absolute;
+  width: 50%;
+  height: 200px;
+  bottom: 0px;
+  border: black 5px solid;
+  background-image: url(../image/BackGround_2nd_Page.jpg);
+  left: 50%;
+  overflow: auto;
+}
+
+.game__container__combat-text > span {
+  display: block;
+  margin: 10px 10px 10px 20px;
+  font-weight: bold;
+  font-family: 'Amatic SC', cursive;
+  font-size: 45px;
 }
 /*# sourceMappingURL=style.css.map */

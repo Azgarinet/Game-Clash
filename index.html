@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Game - CLASH</title>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap&subset=latin-ext"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -19,24 +19,25 @@
             <div class="customization__container">
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Hero:</label>
-                    <select name="" id="" class="customization__dropdown__options">
+                    <select name="" class="customization__dropdown__options">
                         <option value="Warrior">Warrior</option>
                         <option value="Archer">Archer</option>
                     </select>
                 </div>
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Weapon:</label>
-                    <select name="" id="" class="customization__dropdown__options">
-                        <option value="Axe">Axe</option>
+                    <select name="" class="customization__dropdown__options">
                         <option value="Sword">Sword</option>
+                        <option value="Axe">Axe</option>
                         <option value="Two-Handed Sword">Two-Handed Sword</option>
                         <option value="Bow">Bow</option>
-                    </select></div>
+                    </select>
+                </div>
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Off-Hand:</label>
                     <select name="" id="" class="customization__dropdown__options">
-                        <option value="Sword">Sword</option>
                         <option value="Shield">Shield</option>
+                        <option value="Sword">Sword</option>
                         <option value="Quiver">Quiver</option>
                     </select>
                 </div>
@@ -52,11 +53,42 @@
                     <div class="customization__stats__attributes">DEF: </div>
                 </div>
                 <div class="customization__start">
-                    <button class="customization__start__button">Create Hero</button>
+                    <button class="customization__start__button">Creat Hero</button>
                 </div>
 
             </div>
 
+        </div>
+        <div class="game">
+            <div class="game__container">
+                <div class="game__container__hero">
+                    <div class="game__container__hero__bars">
+                        <div class="game__container__hero__bars__hp">100</div>
+                        <div class="game__container__hero__bars__mana">50</div>
+                    </div>
+                    <div class="game__container__hero__image-container">
+                        <img src="image/Warrior.png" alt="Warrior" class="game__container__hero__image">
+                    </div>
+                </div>
+                <div class="game__container__monster">
+                    <div class="game__container__monster__bars">
+                        <div class="game__container__monster__bars__hp">100</div>
+                        <div class="game__container__monster__bars__mana">50</div>
+                    </div>
+                    <div class="game__container__monster__image-container">
+                        <img src="image/Orc.png" alt="Orc" class="game__container__monster__image">
+                    </div>
+                </div>
+                <div class="game__container__panel">
+                    <div class="game__container__panel__attack">ATK</div>
+                    <div class="game__container__panel__defense">DEF</div>
+                    <div class="game__container__panel__special">SPC</div>
+                    <div class="game__container__panel__pass">PASS</div>
+                </div>
+                <div class="game__container__combat-text">
+                    <span>TEXT</span>
+                </div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
