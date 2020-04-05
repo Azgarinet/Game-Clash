@@ -19,26 +19,26 @@
             <div class="customization__container">
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Hero:</label>
-                    <select name="" class="customization__dropdown__options">
-                        <option value="Warrior">Warrior</option>
-                        <option value="Archer">Archer</option>
+                    <select class="customization__dropdown__options first" onchange="SelectedHero();">
+                        <option value="warrior">Warrior</option>
+                        <option value="archer">Archer</option>
                     </select>
                 </div>
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Weapon:</label>
-                    <select name="" class="customization__dropdown__options">
-                        <option value="Sword">Sword</option>
-                        <option value="Axe">Axe</option>
-                        <option value="Two-Handed Sword">Two-Handed Sword</option>
-                        <option value="Bow">Bow</option>
+                    <select class="customization__dropdown__options second" onchange="SelectedWeapon();">
+                        <option value="sword">Sword</option>
+                        <option value="axe">Axe</option>
+                        <option value="twoHandedSword">Two-Handed Sword</option>
+                        <option value="bow">Bow</option>
                     </select>
                 </div>
                 <div class="customization__dropdown">
                     <label for="" class="customization__dropdown__label">Choose a Off-Hand:</label>
-                    <select name="" id="" class="customization__dropdown__options">
-                        <option value="Shield">Shield</option>
-                        <option value="Sword">Sword</option>
-                        <option value="Quiver">Quiver</option>
+                    <select class="customization__dropdown__options third" onchange="SelectedOffHand();">
+                        <option value="shield">Shield</option>
+                        <option value="sword">Sword</option>
+                        <option value="quiver">Quiver</option>
                     </select>
                 </div>
             </div>
@@ -47,10 +47,10 @@
                     <img class="customization__image" src="image/Warrior.png" alt="Warrior">
                 </div>
                 <div class="customization__stats">
-                    <div class="customization__stats__attributes">HP: </div>
-                    <div class="customization__stats__attributes">MP: </div>
-                    <div class="customization__stats__attributes">ATK: </div>
-                    <div class="customization__stats__attributes">DEF: </div>
+                    <div class="customization__stats__attributes">HP:</div>
+                    <div class="customization__stats__attributes">MP:</div>
+                    <div class="customization__stats__attributes">ATK:</div>
+                    <div class="customization__stats__attributes">DEF:</div>
                 </div>
                 <div class="customization__start">
                     <button class="customization__start__button">Creat Hero</button>
@@ -91,6 +91,7 @@
             </div>
         </div>
     </div>
+    <script src="stats.js"></script>
     <script src="main.js"></script>
 </body>
 

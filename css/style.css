@@ -215,7 +215,7 @@ button {
   left: 0%;
 }
 
-.game__container__panel__attack {
+.game__container__panel__attack, .game__container__panel__defense, .game__container__panel__special, .game__container__panel__pass {
   height: 50%;
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
@@ -225,42 +225,13 @@ button {
   text-align: center;
   line-height: 95px;
   border: 1px solid grey;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-.game__container__panel__defense {
-  height: 50%;
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  font-size: 50px;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  text-align: center;
-  line-height: 95px;
-  border: 1px solid grey;
-}
-
-.game__container__panel__special {
-  height: 50%;
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  font-size: 50px;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  text-align: center;
-  line-height: 95px;
-  border: 1px solid grey;
-}
-
-.game__container__panel__pass {
-  height: 50%;
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  font-size: 50px;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  text-align: center;
-  line-height: 95px;
-  border: 1px solid grey;
+.game__container__panel__attack:hover, .game__container__panel__defense:hover, .game__container__panel__special:hover, .game__container__panel__pass:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .game__container__combat-text {

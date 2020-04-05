@@ -29,7 +29,6 @@ button {
         background-color: rgba(0, 0, 0, 0.2);
         color: white;
         font-size: 40px;
-
     }
 }
 
@@ -50,7 +49,6 @@ button {
         height: 33vh;
         margin: 100px auto;
         line-height: calc(33vh - 200px);
-
 
         &__label {
             font-weight: bold;
@@ -109,7 +107,6 @@ button {
             font-weight: bold;
         }
     }
-
 }
 
 .game {
@@ -177,20 +174,18 @@ button {
             flex-wrap: wrap;
             left: 0%;
 
-            &__attack {
-                @include panelButton();
-            }
-
-            &__defense {
-                @include panelButton();
-            }
-
-            &__special {
-                @include panelButton();
-            }
-
+            &__attack,
+            &__defense,
+            &__special,
             &__pass {
                 @include panelButton();
+            }
+
+            &__attack:hover,
+            &__defense:hover,
+            &__special:hover,
+            &__pass:hover {
+                background-color: rgba(0, 0, 0, 0.4);
             }
         }
 
