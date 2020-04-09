@@ -78,7 +78,12 @@ button {
 
     &__stats {
         flex-basis: 30%;
+        display: flex;
         margin: 30px 0;
+
+        &__container {
+            flex-basis: 33%;
+        }
 
         &__attributes {
             width: 200px;
