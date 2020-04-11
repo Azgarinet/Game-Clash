@@ -5,6 +5,10 @@
           box-sizing: border-box;
 }
 
+html {
+  overflow: hidden;
+}
+
 .wrapper {
   height: 300vh;
 }

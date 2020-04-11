@@ -5,6 +5,7 @@ let healthpoints = 0;
 let manapoints = 0;
 let attack = 0;
 let defense = 0;
+let round = 0;
 
 const monsters = [monster];
 
@@ -102,16 +103,62 @@ formHero.addEventListener('click', function () {
     let offhand = SelectedOffHand();
     creatHero(hero, weapon, offhand);
     scroll('.game');
-    new Clash(healthpoints, manapoints, attack, defense, monsters);
+    new Clash(healthpoints, manapoints, attack, defense, monsters, hero);
 })
 
+function whoWin() {
+    const divContainer = document.querySelector('.game__container__combat-text');
+    const createSpan = document.createElement('span');
+    if (healthpoints < 0) {
+        divContainer.appendChild(createSpan);
+        createSpan.textContent = `Monster kill Player`;
+        return
+    } else if (monsters[0].hp < 0) {
+        divContainer.appendChild(createSpan);
+        createSpan.textContent = `Player kill monster`;
+        return
+    }
+}
+
+function mstr() {
+    console.log(round);
+    const divContainer = document.querySelector('.game__container__combat-text');
+    const createSpan = document.createElement('span');
+    if (round === 3 || round === 7 || round === 10) {
+        let special = Math.floor(Math.random() * ((monsters[0].atk + 20) - (monsters[0].atk + 5))) + (monsters[0].atk + 5);
+        divContainer.appendChild(createSpan);
+        createSpan.textContent = `Monster use special ability and hit Player for ${Math.floor(special - (monsters[0].atk * (defense / 100)))}`;
+        healthpoints -= Math.floor(special - (monsters[0].atk * (defense / 100)));
+        document.querySelector('.game__container__hero__bars__hp').textContent = healthpoints;
+        monsters[0].mp -= 20;
+        document.querySelector('.game__container__monster__bars__mana').textContent = monsters[0].mp;
+    } else if (round === 4 || round === 8 || round === 11) {
+        monsters[0].hp += 20;
+        monsters[0].hp = monsters[0].hp > 300 ? monsters[0].hp = 300 : monsters[0].hp;
+        monsters[0].mp += 20;
+        monsters[0].mp = monsters[0].mp > 30 ? monsters[0].mp = 30 : monsters[0].mp;
+        divContainer.appendChild(createSpan);
+        createSpan.textContent = `Monster renewed 20hp and 20mp`;
+        document.querySelector('.game__container__monster__bars__hp').textContent = monsters[0].hp;
+        document.querySelector('.game__container__monster__bars__mana').textContent = monsters[0].mp;
+    } else {
+        let dmg = Math.floor(Math.random() * ((monsters[0].atk + 5) - (monsters[0].atk - 5))) + (monsters[0].atk - 5);
+        divContainer.appendChild(createSpan);
+        createSpan.textContent = `Monster hit Player for ${Math.floor(dmg - (monsters[0].atk * (defense / 100)))}`;
+        healthpoints -= Math.floor(dmg - (monsters[0].atk * (defense / 100)));
+        document.querySelector('.game__container__hero__bars__hp').textContent = healthpoints;
+    }
+    whoWin()
+}
+
 class Clash {
-    constructor(healthpoints, manapoints, attack, defense, monsters) {
+    constructor(healthpoints, manapoints, attack, defense, monsters, hero) {
         this.healthpoints = healthpoints
         this.manapoints = manapoints;
         this.attack = attack;
         this.defense = defense;
         this.monsters = monsters;
+        this.hero = hero;
 
         const hpbar = document.querySelector('.game__container__hero__bars__hp');
         const manabar = document.querySelector('.game__container__hero__bars__mana');
@@ -133,47 +180,75 @@ class Clash {
     }
 
     attackAction() {
+        round++
         let dmg = Math.floor(Math.random() * ((attack + 5) - (attack - 5))) + (attack - 5);
         const divContainer = document.querySelector('.game__container__combat-text');
         const createSpan = document.createElement('span');
         divContainer.appendChild(createSpan);
-        createSpan.textContent = `Player hit monster for ${Math.floor(dmg - (attack * (monsters[0].def / 100)))}`
+        createSpan.textContent = `Player hit monster for ${Math.floor(dmg - (attack * (monsters[0].def / 100)))}`;
         monsters[0].hp -= Math.floor(dmg - (attack * (monsters[0].def / 100)));
         document.querySelector('.game__container__monster__bars__hp').textContent = monsters[0].hp;
+        setTimeout(mstr, 500);
+        whoWin()
     }
     defenseAction() {
-        console.log('tak')
+        round++
+        console.log(defense)
+        const divContainer = document.querySelector('.game__container__combat-text');
+        const createSpan = document.createElement('span');
+        divContainer.appendChild(createSpan);
+        defense = defense * 2;
+        createSpan.textContent = `Defense x2 for round`
+        console.log(defense)
+        setTimeout(mstr, 500);
+        defense = defense / 2;
+        console.log(defense)
+        whoWin()
     }
 
     specialAction() {
+        round++
         const divContainer = document.querySelector('.game__container__combat-text');
         const createSpan = document.createElement('span');
         if (manapoints < 30) {
             divContainer.appendChild(createSpan);
-            createSpan.textContent = `Not enough mana`
+            createSpan.textContent = `Not enough mana`;
             return
         } else {
-            let dmg = Math.floor(Math.random() * ((attack + 25) - (attack + 5))) + (attack + 5);
+            let special = Math.floor(Math.random() * ((attack + 25) - (attack + 5))) + (attack + 5);
             divContainer.appendChild(createSpan);
-            createSpan.textContent = `Player use special ability and hit monster for ${Math.floor(dmg - (attack * (monsters[0].def / 100)))}`
-            monsters[0].hp -= Math.floor(dmg - (attack * (monsters[0].def / 100)));
+            createSpan.textContent = `Player use special ability and hit monster for ${Math.floor(special - (attack * (monsters[0].def / 100)))}`;
+            monsters[0].hp -= Math.floor(special - (attack * (monsters[0].def / 100)));
             document.querySelector('.game__container__monster__bars__hp').textContent = monsters[0].hp;
             manapoints -= 30;
             document.querySelector('.game__container__hero__bars__mana').textContent = manapoints;
         }
+        setTimeout(mstr, 500);
+        whoWin()
     }
     passAction() {
+        round++
         const divContainer = document.querySelector('.game__container__combat-text');
         const createSpan = document.createElement('span');
         divContainer.appendChild(createSpan);
-        healthpoints += 35;
-        manapoints += 20;
-        createSpan.textContent = `Player renewed 35hp and 20mp`
+        if (SelectedHero() === warrior) {
+            healthpoints += 35;
+            healthpoints = healthpoints > 200 ? healthpoints = 200 : healthpoints;
+            manapoints += 20;
+            manapoints = manapoints > 50 ? manapoints = 50 : manapoints;
+            createSpan.textContent = `Player renewed 35hp and 20mp`;
+        } else if (SelectedHero() === archer) {
+            healthpoints += 30;
+            healthpoints = healthpoints > 150 ? healthpoints = 150 : healthpoints;
+            manapoints += 25;
+            manapoints = manapoints > 100 ? manapoints = 100 : manapoints;
+            createSpan.textContent = `Player renewed 30hp and 30mp`;
+        }
         document.querySelector('.game__container__hero__bars__hp').textContent = healthpoints;
         document.querySelector('.game__container__hero__bars__mana').textContent = manapoints;
-
+        setTimeout(mstr, 500);
+        whoWin()
     }
-
     atk() {
         const atkbutton = document.querySelector('.game__container__panel__attack');
         atkbutton.addEventListener('click', this.attackAction);
@@ -191,6 +266,5 @@ class Clash {
         const passbutton = document.querySelector('.game__container__panel__pass');
         passbutton.addEventListener('click', this.passAction);
     }
-
 
 }
